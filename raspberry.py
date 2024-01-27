@@ -21,8 +21,8 @@ class RaspberryApi:
     def show_price(self, price: float):
         print(f"Your Price is {price}")
 
-    def show_capacity(self, capacitty: int):
-        print(f"Parking Capacity is {capacitty}")
+    def show_capacity(self, capacity: int):
+        print(f"Parking Capacity is {capacity}")
 
     def read_enter_camera(self):
         # reads frames from live video

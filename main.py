@@ -39,6 +39,8 @@ def read_cars_plates(img) -> str:
 current_time = 0
 while True:
     current_time += 1
+    raspberry.show_capacity(parking.capacitty)
+    
     front_img = raspberry.read_enter_camera()
 
     plate = read_cars_plates(front_img)
@@ -61,8 +63,6 @@ while True:
             raspberry.show_price(abs(current_time - car.enter_time) * PRICE_CONSTANT)
         except UnknownCar:
             raspberry.play_alarm_sound()
-
-    
 
     # Wait for Esc key to stop
     if cv2.waitKey(33) == 27:
