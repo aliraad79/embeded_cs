@@ -4,8 +4,8 @@ from requests.auth import HTTPBasicAuth
 import cv2
 
 
-front_camera_ip = "http://10.100.50.126:8080/shot.jpg"
-exit_camera_ip = "http://10.100.50.126:8080/shot.jpg"
+front_camera_ip = "http://10.100.50.154:8080/shot.jpg"
+exit_camera_ip = "http://10.100.50.154:8080/shot.jpg"
 
 
 class RaspberryApi:
