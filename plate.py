@@ -1,5 +1,5 @@
 import cv2
-import easyocr
+# import easyocr
 import imutils
 import numpy as np
 
@@ -33,7 +33,8 @@ def read_plate_from_gray_image(gray):
     (x2, y2) = (np.max(x), np.max(y))
 
     cropped_image = gray[x1 : x2, y1 : y2]
-    return easyocr.Reader(["en", "fa"]).readtext(cropped_image)[0][1]
+    return "plate"
+    # return easyocr.Reader(["en", "fa"]).readtext(cropped_image)[0][1]
 
 
 
