@@ -14,9 +14,8 @@ parking = Parking()
 
 def read_cars_plates(cv2_img) -> str:
     center = cv2_img.shape
-    x = center[1] / 2 - 500 / 2
-    y = center[0] / 2 - 500 / 2
-    crop_img = cv2_img[int(y) : int(y + 500), int(x) : int(x + 500)]
+    crop_img = cv2_img[0 : 100, 0 : 100]
+    cv2.imshow("PNG", crop_img)
 
     img = Image.fromarray(crop_img)
     img = img.convert("RGB")
@@ -38,6 +37,7 @@ while True:
             parking.add_car(plate, current_time)
             parking.welcome(plate)
             raspberry.rotate_motor_clockwise()
+            raspberry.play_alarm_sound()
         except FullParking:
             raspberry.play_alarm_sound()
         except DuplicatedCar:

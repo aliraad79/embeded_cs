@@ -20,11 +20,14 @@ def get_color(img):
 
     if (8 <= red <= 10) and (8 <= green <= 10) and (8 <= blue <= 10):
         return "dark"
-    elif (45 <= red <= 60) and (45 <= green <= 60) and (45 <= blue <= 60):
-        return "black"
-    elif blue > 200:
-        return "blue"
-    elif green > 200:
+    elif red < 100 and blue > 195 and green > 200:
+        return "yellow"
+    elif red > 200 and green > 180 and blue < 150:
+        return "light_blue"
+    elif red < 110 and green > 150 and blue > 200:
+        return "orange"
+    elif red < 130 and green > 188 and blue < 160:
         return "green"
+
 
     return None
