@@ -1,38 +1,38 @@
 import cv2
 # import easyocr
-import imutils
+# import imutils
 import numpy as np
 
 
 def read_plate_from_gray_image(gray):
-    bfilter = cv2.bilateralFilter(gray, 11, 11, 17)
-    edged = cv2.Canny(bfilter, 30, 200)
+    # bfilter = cv2.bilateralFilter(gray, 11, 11, 17)
+    # edged = cv2.Canny(bfilter, 30, 200)
 
-    keypoints = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    contours = imutils.grab_contours(keypoints)
-    contours = sorted(contours, key=cv2.contourArea, reverse=True)[:10]
+    # keypoints = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    # contours = imutils.grab_contours(keypoints)
+    # contours = sorted(contours, key=cv2.contourArea, reverse=True)[:10]
 
-    location = None
+    # location = None
 
-    for contour in contours:
-        # cv2.approxPolyDP returns a resampled contour, so this will still return a set of (x, y) points
-        approx = cv2.approxPolyDP(contour, 10, True)
-        if len(approx) == 4:
-            location = approx
-            break
+    # for contour in contours:
+    #     # cv2.approxPolyDP returns a resampled contour, so this will still return a set of (x, y) points
+    #     approx = cv2.approxPolyDP(contour, 10, True)
+    #     if len(approx) == 4:
+    #         location = approx
+    #         break
 
-    mask = np.zeros(gray.shape, np.uint8)
+    # mask = np.zeros(gray.shape, np.uint8)
 
-    new_image = cv2.drawContours(mask, [location], 0, 255, -1)
+    # new_image = cv2.drawContours(mask, [location], 0, 255, -1)
 
-    new_image = cv2.bitwise_and(gray, gray, mask = mask)
+    # new_image = cv2.bitwise_and(gray, gray, mask = mask)
 
 
-    (x, y) = np.where(mask == 255)
-    (x1, y1) = (np.min(x), np.min(y))
-    (x2, y2) = (np.max(x), np.max(y))
+    # (x, y) = np.where(mask == 255)
+    # (x1, y1) = (np.min(x), np.min(y))
+    # (x2, y2) = (np.max(x), np.max(y))
 
-    cropped_image = gray[x1 : x2, y1 : y2]
+    # cropped_image = gray[x1 : x2, y1 : y2]
     return "plate"
     # return easyocr.Reader(["en", "fa"]).readtext(cropped_image)[0][1]
 
