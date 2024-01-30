@@ -17,7 +17,6 @@ def read_cars_plates(cv2_img) -> str:
     x = center[1] / 2 - 500 / 2
     y = center[0] / 2 - 500 / 2
     crop_img = cv2_img[int(y) : int(y + 500), int(x) : int(x + 500)]
-    cv2.imshow("PIC", crop_img)
 
     img = Image.fromarray(crop_img)
     img = img.convert("RGB")
